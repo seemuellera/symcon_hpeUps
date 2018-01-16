@@ -52,7 +52,7 @@
 		$this->RegisterVariableInteger("HpeUpsBatteryTestStatus", "Battery test status");
 
 		// Timer
-		$this->RegisterTimer("UpdateHpeUpsStatus", 0, 'HPEUPS_RefreshInformation($_IPS[\'TARGET\']);');
+		$this->RegisterTimer("RefreshInformation", 0, 'HPEUPS_RefreshInformation($_IPS[\'TARGET\']);');
  
         }
  
