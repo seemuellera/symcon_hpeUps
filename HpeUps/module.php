@@ -1,8 +1,7 @@
 <?php
 
-	// Include the botvac library
-	require ('libs/NeatoBotvacClient.php');
-	require ('libs/NeatoBotvacRobot.php');
+	// Include the snmp library
+	require ('libs/snmp.php');
 
     // Klassendefinition
     class HpeUps extends IPSModule {
@@ -23,13 +22,9 @@
             	parent::Create();
 
 		// Properties
-		$this->RegisterPropertyString("Sender","SymconBotvac");
-		$this->RegisterPropertyString("Username","");
-		$this->RegisterPropertyString("Password","");
-		$this->RegisterPropertyString("AuthToken","");
-		$this->RegisterPropertyString("BotvacVendor","");
-		$this->RegisterPropertyString("Robot","");
-		$this->RegisterPropertyString("BotvacSecret");
+		$this->RegisterPropertyString("Sender","SymconHpeUps");
+		$this->RegisterPropertyString("Hostname","");
+		$this->RegisterPropertyString("Community","");
 		$this->RegisterPropertyInteger("RefreshInterval",5);
 
 		// Variables
