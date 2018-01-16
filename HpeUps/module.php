@@ -107,6 +107,8 @@
 
 		$result = $snmp->bulk_get($this->ReadPropertyString("Hostname"), $oid, ['community' => $this->ReadPropertyString("Community") ] );
 
+		print_r($result);
+
 		$resultValue = $result[$oid];
 
 		return $resultValue;
