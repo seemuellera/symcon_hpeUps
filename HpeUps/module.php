@@ -97,7 +97,7 @@
         */
         public function RefreshInformation() {
 
-		SetValue($this->GetIDForIdent("HpeUpsMgmtFW"),$this->SnmpGet('.1.3.6.1.4.1.232.165.1.2.3');
+		SetValue($this->GetIDForIdent("HpeUpsMgmtFW"),$this->SnmpGet('.1.3.6.1.4.1.232.165.1.2.3'));
 	}
 
 	protected function SnmpGet($oid) {
