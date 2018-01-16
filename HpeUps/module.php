@@ -36,19 +36,19 @@
 		$this->RegisterVariableString("HpeUpsModel", "UPS Model");
 		$this->RegisterVariableInteger("HpeUpsBatTimeRemaining", "Remaining battery time");
 		$this->RegisterVariableInteger("HpeUpsBatVoltage", "Battery voltage");
-		$this->RegisterVariableInteger("HpeUpsBatCapacity", "Battery capacity");
+		$this->RegisterVariableInteger("HpeUpsBatCapacity", "Battery capacity","~Intensity.100");
 		$this->RegisterVariableInteger("HpeUpsBatAbmStatus", "Battery status");
-		$this->RegisterVariableFloat("HpeUpsInputFrequency", "Input frequency");
+		$this->RegisterVariableFloat("HpeUpsInputFrequency", "Input frequency", "~Hertz");
 		$this->RegisterVariableInteger("HpeUpsInputLineBads", "Number of times input power was out of tolerance");
 		$this->RegisterVariableInteger("HpeUpsInputVoltage", "Input voltage");
 		$this->RegisterVariableInteger("HpeUpsInputCurrent", "Input current");
-		$this->RegisterVariableInteger("HpeUpsOutputLoad", "Output Load");
-		$this->RegisterVariableFloat("HpeUpsOutputFrequency", "Output frequency");
+		$this->RegisterVariableInteger("HpeUpsOutputLoad", "Output Load", "~Intensity.100");
+		$this->RegisterVariableFloat("HpeUpsOutputFrequency", "Output frequency", "~Hertz");
 		$this->RegisterVariableInteger("HpeUpsOutputVoltage", "Output voltage");
 		$this->RegisterVariableInteger("HpeUpsOutputCurrent", "Output current");
 		$this->RegisterVariableInteger("HpeUpsOutputPower", "Output power");
 		$this->RegisterVariableInteger("HpeUpsOutputSource", "Output source");
-		$this->RegisterVariableInteger("HpeUpsAmbientTemperature", "Ambient temperature");
+		$this->RegisterVariableInteger("HpeUpsAmbientTemperature", "Ambient temperature","~Temperature.ZWave");
 		$this->RegisterVariableInteger("HpeUpsBatteryTestStatus", "Battery test status");
 
 		// Timer
@@ -131,8 +131,13 @@
 		$oldValue = GetValue($this->GetIDForIdent($varIdent));
 		$newValue = $this->SnmpGet($oid);
 
-		if ($newValue != $oldValue) {
+		if ( ($varident == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
 		
+			$newValue = $newValue / 10;
+		}
+
+		if ($newValue != $oldValue) {
+
 			SetValue($this->GetIdForIdent($varIdent), $newValue);
 		}
 	}
