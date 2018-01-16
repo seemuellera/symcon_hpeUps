@@ -99,6 +99,26 @@
 
 		$oid_mapping_table['HpeUpsMgmtFW'] = '.1.3.6.1.4.1.232.165.1.2.3';
 		$oid_mapping_table['HpeUpsMgmtHW'] = '.1.3.6.1.4.1.232.165.1.2.4';
+		$oid_mapping_table['HpeUpsMgmgPartNr'] = '.1.3.6.1.4.1.232.165.1.2.5';
+		$oid_mapping_table['HpeUpsMgmgSerialNr'] = '.1.3.6.1.4.1.232.165.1.2.7';
+		$oid_mapping_table['HpeUpsSW'] = '.1.3.6.1.4.1.232.165.3.1.3';
+		$oid_mapping_table['HpeUpsModel'] = '.1.3.6.1.4.1.232.165.3.1.2';
+		$oid_mapping_table['HpeUpsBatTimeRemaining'] = '.1.3.6.1.4.1.232.165.3.2.1';
+		$oid_mapping_table['HpeUpsBatVoltage'] = '.1.3.6.1.4.1.232.165.3.2.2';
+		$oid_mapping_table['HpeUpsBatCapacity'] = '.1.3.6.1.4.1.232.165.3.2.4';
+		$oid_mapping_table['HpeUpsBatAbmStatus'] = '.1.3.6.1.4.1.232.165.3.2.5';
+		$oid_mapping_table['HpeUpsInputFrequency'] = '.1.3.6.1.4.1.232.165.3.3.1';
+		$oid_mapping_table['HpeUpsInputLineBads'] = '.1.3.6.1.4.1.232.165.3.3.2';
+		$oid_mapping_table['HpeUpsInputVoltage'] = '.1.3.6.1.4.1.232.165.3.3.4.1.2.1';
+		$oid_mapping_table['HpeUpsInputCurrent'] = '.1.3.6.1.4.1.232.165.3.3.4.1.3.1';
+		$oid_mapping_table['HpeUpsOutputLoad'] = '.1.3.6.1.4.1.232.165.3.4.1';
+		$oid_mapping_table['HpeUpsOutputFrequency'] = '.1.3.6.1.4.1.232.165.3.4.2';
+		$oid_mapping_table['HpeUpsOutputVoltage'] = '.1.3.6.1.4.1.232.165.3.4.4.1.2.1';
+		$oid_mapping_table['HpeUpsOutputCurrent'] = '.1.3.6.1.4.1.232.165.3.4.4.1.3.1';
+		$oid_mapping_table['HpeUpsOutputPower'] = '.1.3.6.1.4.1.232.165.3.4.4.1.4.1';
+		$oid_mapping_table['HpeUpsOutputSource'] = '.1.3.6.1.4.1.232.165.3.4.5';
+		$oid_mapping_table['HpeUpsAmbientTemperature'] = '.1.3.6.1.4.1.232.165.3.6.1';
+		$oid_mapping_table['HpeUpsBatteryTestStatus'] = '.1.3.6.1.4.1.232.165.3.7.2';
 
 		foreach (array_keys($oid_mapping_table) as $currentIdent) {
 		
