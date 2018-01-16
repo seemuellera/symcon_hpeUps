@@ -131,7 +131,7 @@
 		$oldValue = GetValue($this->GetIDForIdent($varIdent));
 		$newValue = $this->SnmpGet($oid);
 
-		if ( ($varident == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
+		if ( ($varIdent == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
 		
 			$newValue = $newValue / 10;
 		}
