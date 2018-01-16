@@ -1,0 +1,11 @@
+{
+    "id": "{C4E7FE4A-5548-44FD-8E61-9F26DEEA1E03}",
+    "name": "HpeUps",
+    "type": 3,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "HPEUPS"
+}
