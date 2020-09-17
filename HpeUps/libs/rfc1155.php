@@ -200,7 +200,7 @@ class rfc1155_Asn1Object
       $run = $length & 0x7F;
       $length = 0;
       for($i = 1; $i <= $run; $i++)
-        $length = $length * 256 + ord($stream{$i});
+        $length = $length * 256 + ord($stream[$i]);
     }
     return array($length, substr($stream, $i));
   }
