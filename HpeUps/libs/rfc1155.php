@@ -520,7 +520,7 @@ class rfc1155_Integer extends rfc1155_Asn1Object
       for($i = 1; $i < strlen($stream); $i++)
       {
         $negbit *= 256;
-        $this->value = $this->value * 256 + ord($stream{$i});
+        $this->value = $this->value * 256 + ord($stream[$i]);
       }
       $this->value = $this->value - $negbit;
     }
@@ -743,10 +743,10 @@ class rfc1155_ObjectID extends rfc1155_Asn1Object
     }
 
     // Do the funky decode of the first octet
-    if(ord($stream{0}) < 128)
+    if(ord($stream[0]) < 128)
     {
-      $this->value[] = intval(ord($stream{0}) / 40);
-      $this->value[] = ord($stream{0}) % 40;
+      $this->value[] = intval(ord($stream[0]) / 40);
+      $this->value[] = ord($stream[0]) % 40;
     }
     else
     {
@@ -763,7 +763,7 @@ class rfc1155_ObjectID extends rfc1155_Asn1Object
     $n = 1;
     while($n < strlen($stream))
     {
-      $subid = ord($stream{$n});
+      $subid = ord($stream[$n]);
       $n += 1;
 
       // If bit 8 is not set, this is the last octet of this subid
@@ -773,7 +773,7 @@ class rfc1155_ObjectID extends rfc1155_Asn1Object
         $val = $subid & 0x7f;
         while(($subid & 0x80) == 0x80)
         {
-          $subid = ord($stream{$n});
+          $subid = ord($stream[$n]);
           $n += 1;
           $val = $val * 128 + ($subid & 0x7f);
         }
@@ -1059,7 +1059,7 @@ class rfc1155_IPAddress extends rfc1155_OctetString
   */
   public function decodeContents($stream)
   {
-    $this->value = ord($stream{0}) . '.' . ord($stream{1}) . '.' . ord($stream{2}) . '.' . ord($stream{3});
+    $this->value = ord($stream[0]) . '.' . ord($stream[1]) . '.' . ord($stream[2]) . '.' . ord($stream[3]);
     return $this;
   }
 }
@@ -1142,7 +1142,7 @@ class rfc1155_Counter extends rfc1155_Integer
     {
       $this->value = 0;
       for($i = 0; $i < strlen($stream); $i++)
-        $this->value = $this->value * 256 + ord($stream{$i});
+        $this->value = $this->value * 256 + ord($stream[$i]);
     }
     return $this;
   }
