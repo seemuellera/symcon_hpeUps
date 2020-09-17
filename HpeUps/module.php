@@ -95,7 +95,7 @@
 	* Get the list of robots linked to this profile and modifies the Select list to allow the user to select them.
         *
         */
-        public function RefreshInformation() {
+    public function RefreshInformation() {
 
 		$oid_mapping_table['HpeUpsMgmtFW'] = '.1.3.6.1.4.1.232.165.1.2.3';
 		$oid_mapping_table['HpeUpsMgmtHW'] = '.1.3.6.1.4.1.232.165.1.2.4';
