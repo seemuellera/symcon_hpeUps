@@ -43,11 +43,11 @@ function hexdump($string)
 {
   $ret = '';
   for($i = 0; $i < strlen($string); $i++)
-    $ret .= str_pad(dechex(ord($string{$i})), 2, '0', STR_PAD_LEFT) . ' ';
+    $ret .= str_pad(dechex(ord($string[$i])), 2, '0', STR_PAD_LEFT) . ' ';
   $ret .= '[';
   for($i = 0; $i < strlen($string); $i++)
   {
-    $o = ord($string{$i});
+    $o = ord($string[$i]);
     if($o < 32 || $o > 127) $ret .= '.';
     else $ret .= chr($o);
   }
@@ -165,7 +165,7 @@ class rfc1155_Asn1Object
   */
   public function decodeTag($stream)
   {
-    $tag = ord($stream{0});
+    $tag = ord($stream[0]);
     $n = 1;
     if(($tag & 0x1F) == 0x1F)
     {
@@ -174,7 +174,7 @@ class rfc1155_Asn1Object
       $tag = 0;
       do
       {
-        $byte = ord($stream{$n});
+        $byte = ord($stream[$n]);
         $tag = $tag * 128 + ($byte & 0x7F);
         $n += 1;
       } while($byte & 0x80);
@@ -192,7 +192,7 @@ class rfc1155_Asn1Object
   */
   public function decodeLength($stream)
   {
-    $length = ord($stream{0});
+    $length = ord($stream[0]);
     $i = 1;
     if($length & 0x80)
     {
@@ -528,7 +528,7 @@ class rfc1155_Integer extends rfc1155_Asn1Object
     {
       $this->value = $byte;
       for($i = 1; $i < strlen($stream); $i++)
-        $this->value = $this->value * 256 + ord($stream{$i});
+        $this->value = $this->value * 256 + ord($stream[$i]);
     }
     return $this;
   }
@@ -567,7 +567,7 @@ class rfc1155_OctetString extends rfc1155_Asn1Object
   {
     for($i = strlen($this->value) - 1; $i >= 0; $i--)
     {
-      if($this->value{$i} != "\n" && $this->value{$i} != "\t" && $this->value{$i} != "\r")
+      if($this->value[$i] != "\n" && $this->value[$i] != "\t" && $this->value[$i] != "\r")
       {
         if(ord($this->value{$i}) < 16 || ord($this->value{$i}) > 127)
         {
