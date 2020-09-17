@@ -512,7 +512,7 @@ class rfc1155_Integer extends rfc1155_Asn1Object
   public function decodeContents($stream)
   {
     $this->value = 0;
-    $byte = ord($stream{0});
+    $byte = ord($stream[0]);
     if(($byte & 0x80) == 0x80)
     {
       $negbit = 0x80;
