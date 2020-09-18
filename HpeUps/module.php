@@ -104,8 +104,8 @@
 		$oid_mapping_table['HpeUpsBatAbmStatus'] = '.1.3.6.1.4.1.232.165.3.2.5.0';
 		$oid_mapping_table['HpeUpsInputFrequency'] = '.1.3.6.1.4.1.232.165.3.3.1.0';
 		$oid_mapping_table['HpeUpsInputLineBads'] = '.1.3.6.1.4.1.232.165.3.3.2.0';
-		$oid_mapping_table['HpeUpsInputVoltage'] = '.1.3.6.1.4.1.232.165.3.3.4.1.2.0';
-		$oid_mapping_table['HpeUpsInputCurrent'] = '.1.3.6.1.4.1.232.165.3.3.4.1.3.0';
+		$oid_mapping_table['HpeUpsInputVoltage'] = '.1.3.6.1.4.1.232.165.3.3.4.1.2.1';
+		$oid_mapping_table['HpeUpsInputCurrent'] = '.1.3.6.1.4.1.232.165.3.3.4.1.3.1';
 		$oid_mapping_table['HpeUpsOutputLoad'] = '.1.3.6.1.4.1.232.165.3.4.1.0';
 		$oid_mapping_table['HpeUpsOutputFrequency'] = '.1.3.6.1.4.1.232.165.3.4.2.0';
 		$oid_mapping_table['HpeUpsOutputVoltage'] = '.1.3.6.1.4.1.232.165.3.4.4.1.2.0';
