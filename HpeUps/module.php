@@ -141,9 +141,9 @@
 	
 		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), $oid);
 
-		$resultValue = reset($result);
+		print_r($result);
 
-		return $resultValue;
+		return $result;
 	}
 
     }
