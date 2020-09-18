@@ -1,8 +1,5 @@
 <?php
 
-	// Include the snmp library
-	require ('libs/snmp.php');
-
     // Klassendefinition
     class HpeUps extends IPSModule {
  
@@ -23,8 +20,6 @@
 
 		// Properties
 		$this->RegisterPropertyString("Sender","SymconHpeUps");
-		$this->RegisterPropertyString("Hostname","");
-		$this->RegisterPropertyString("Community","");
 		$this->RegisterPropertyInteger("RefreshInterval",5);
 		$this->RegisterPropertyInteger("SnmpInstance",0);
 
@@ -80,8 +75,6 @@
 
 		// Add the Elements
 		$form['elements'][] = Array("type" => "NumberSpinner", "name" => "RefreshInterval", "caption" => "Refresh Interval");
-		$form['elements'][] = Array("type" => "ValidationTextBox", "name" => "Hostname", "caption" => "Hostname");
-		$form['elements'][] = Array("type" => "PasswordTextBox", "name" => "Community", "caption" => "Community");
 		$form['elements'][] = Array("type" => "SelectInstance", "name" => "SnmpInstance", "caption" => "SNMP instance");
 
 		// Add the buttons for the test center
@@ -146,10 +139,6 @@
 
 	protected function SnmpGet($oid) {
 	
-		// $snmp = new snmp();
-		// $snmp->version = SNMP_VERSION_2;
-
-		// $result = $snmp->bulk_get($this->ReadPropertyString("Hostname"), $oid, ['community' => $this->ReadPropertyString("Community") ] );
 		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance", $oid);
 
 		$resultValue = reset($result);
