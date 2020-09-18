@@ -117,7 +117,6 @@
 
 		foreach (array_keys($oid_mapping_table) as $currentIdent) {
 		
-			print "Updating current Ident: $currentIdent \n";
 			$this->UpdateVariable($currentIdent, $oid_mapping_table[$currentIdent]);
 		}
 	}
