@@ -26,6 +26,7 @@
 		$this->RegisterPropertyString("Hostname","");
 		$this->RegisterPropertyString("Community","");
 		$this->RegisterPropertyInteger("RefreshInterval",5);
+		$this->RegisterPropertyInteger("SnmpInstance",0);
 
 		// Variables
 		$this->RegisterVariableString("HpeUpsMgmtFW", "Management Module Firmware Version");
@@ -81,9 +82,10 @@
 		$form['elements'][] = Array("type" => "NumberSpinner", "name" => "RefreshInterval", "caption" => "Refresh Interval");
 		$form['elements'][] = Array("type" => "ValidationTextBox", "name" => "Hostname", "caption" => "Hostname");
 		$form['elements'][] = Array("type" => "PasswordTextBox", "name" => "Community", "caption" => "Community");
+		$form['elements'][] = Array("type" => "SelectInstance", "name" => "SnmpInstance", "caption" => "SNMP instance");
 
 		// Add the buttons for the test center
-                $form['actions'][] = Array("type" => "Button", "label" => "Refresh Overall Status", "onClick" => 'HPEUPS_RefreshInformation($id);');
+        $form['actions'][] = Array("type" => "Button", "label" => "Refresh Overall Status", "onClick" => 'HPEUPS_RefreshInformation($id);');
 
 		// Return the completed form
 		return json_encode($form);
