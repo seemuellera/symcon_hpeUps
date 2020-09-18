@@ -146,10 +146,11 @@
 
 	protected function SnmpGet($oid) {
 	
-		$snmp = new snmp();
-		$snmp->version = SNMP_VERSION_2;
+		// $snmp = new snmp();
+		// $snmp->version = SNMP_VERSION_2;
 
-		$result = $snmp->bulk_get($this->ReadPropertyString("Hostname"), $oid, ['community' => $this->ReadPropertyString("Community") ] );
+		// $result = $snmp->bulk_get($this->ReadPropertyString("Hostname"), $oid, ['community' => $this->ReadPropertyString("Community") ] );
+		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance", $oid);
 
 		$resultValue = reset($result);
 
