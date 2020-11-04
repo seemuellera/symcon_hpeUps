@@ -139,7 +139,7 @@
 
 	protected function SnmpGet($oid) {
 	
-		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), $oid);
+		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), Array($oid));
 
 		return $result[$oid];
 	}
