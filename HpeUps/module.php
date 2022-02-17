@@ -24,6 +24,7 @@
 		$this->RegisterPropertyInteger("SnmpInstance",0);
 
 		// Variables
+		$this->RegisterVariableBoolean("HpeUpsReachable","Management Module reachable", "~Alert.Reversed");
 		$this->RegisterVariableString("HpeUpsMgmtFW", "Management Module Firmware Version");
 		$this->RegisterVariableString("HpeUpsMgmtHW", "Management Module Hardware Version");
 		$this->RegisterVariableString("HpeUpsMgmgPartNr", "Management Module Part Number");
@@ -115,10 +116,14 @@
 		$oid_mapping_table['HpeUpsAmbientTemperature'] = '.1.3.6.1.4.1.232.165.3.6.1.0';
 		$oid_mapping_table['HpeUpsBatteryTestStatus'] = '.1.3.6.1.4.1.232.165.3.7.2.0';
 
+		/*
 		foreach (array_keys($oid_mapping_table) as $currentIdent) {
 		
 			$this->UpdateVariable($currentIdent, $oid_mapping_table[$currentIdent]);
 		}
+		*/
+		
+		$this->BulkUpdateVariables($oid_mapping_table);
 	}
 
 	protected function UpdateVariable($varIdent, $oid) {
@@ -136,12 +141,61 @@
 			SetValue($this->GetIdForIdent($varIdent), $newValue);
 		}
 	}
+	
+	protected function BulkUpdateVariables($mappingTable) {
+	
+		$oids = Array();
+		
+		foreach($mappingTable as $currentOid) {
+			
+			$oids[] = $currentOid;
+		}
+	
+		$allResults = $this->SnmpGet($oids);
+		
+		if (! $allResults) {
+			
+			return false;
+		}
+		
+		$identLookupTable = array_flip ($mappingTable);
+
+		foreach ($allResults as $resultOid => $resultValue) {
+			
+			$varIdent = $identLookupTable[$resultOid];
+			
+			if ( ($varIdent == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
+			
+				$newValue = $resultValue / 10;
+			}
+			else {
+				
+				$newValue = $resultValue;
+			}
+
+			SetValue($this->GetIdForIdent($varIdent), $newValue);
+		}
+	}
 
 	protected function SnmpGet($oid) {
 	
 		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), Array($oid));
 
 		return $result[$oid];
+	}
+	
+	protected function SnmpBulkGet($oids) {
+	
+		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), Array($oids));
+		
+		if (count($result) == 0) {
+			
+			SetValue($this->GetIDForIdent("HpeUpsReachable"), false);
+			return false;
+		}
+		
+		SetValue($this->GetIDForIdent("HpeUpsReachable"), true);
+		return $result;
 	}
 
 }
