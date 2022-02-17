@@ -151,7 +151,7 @@
 			$oids[] = $currentOid;
 		}
 	
-		$allResults = $this->SnmpGet($oids);
+		$allResults = $this->SnmpBulkGet($oids);
 		
 		if (! $allResults) {
 			
