@@ -144,14 +144,7 @@
 	
 	protected function BulkUpdateVariables($mappingTable) {
 	
-		$oids = Array();
-		
-		foreach($mappingTable as $currentOid) {
-			
-			$oids[] = $currentOid;
-		}
-	
-		$allResults = $this->SnmpBulkGet($oids);
+		$allResults = $this->SnmpBulkGet($mappingTable);
 		
 		if (! $allResults) {
 			
@@ -186,7 +179,7 @@
 	
 	protected function SnmpBulkGet($oids) {
 	
-		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), Array($oids));
+		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), $oids);
 		
 		if (count($result) == 0) {
 			
