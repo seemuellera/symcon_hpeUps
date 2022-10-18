@@ -94,8 +94,6 @@
         */
     public function RefreshInformation() {
 
-		$this->LogMessage("INFO - refreshing information", KL_INFO);
-
 		$oid_mapping_table['HpeUpsMgmtFW'] = '.1.3.6.1.4.1.232.165.1.2.3.0';
 		$oid_mapping_table['HpeUpsMgmtHW'] = '.1.3.6.1.4.1.232.165.1.2.4.0';
 		$oid_mapping_table['HpeUpsMgmgPartNr'] = '.1.3.6.1.4.1.232.165.1.2.5.0';
@@ -131,6 +129,8 @@
 			$this->LogMessage("ERROR - Unable to fetch data via SNMP", KL_ERROR);
 			return false;
 		}
+
+		$this->LogMessage("ERROR - fetching " . count($allResults) . " records via SNMP", KL_ERROR);
 		
 		$identLookupTable = array_flip ($mappingTable);
 
