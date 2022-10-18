@@ -129,12 +129,12 @@
 			$this->LogMessage("ERROR - Unable to fetch data via SNMP", KL_ERROR);
 			return false;
 		}
-
-		$this->LogMessage("ERROR - fetching " . count($allResults) . " records via SNMP", KL_ERROR);
 		
 		$identLookupTable = array_flip ($mappingTable);
 
 		foreach ($allResults as $resultOid => $resultValue) {
+
+			$this->LogMessage("INFO - processing $resultOid / $resultValue", KL_ERROR);
 			
 			$varIdent = $identLookupTable[$resultOid];
 			
