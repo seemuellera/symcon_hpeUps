@@ -94,6 +94,8 @@
         */
     public function RefreshInformation() {
 
+		$this->LogMessage("INFO - refreshing information", KL_INFO);
+
 		$oid_mapping_table['HpeUpsMgmtFW'] = '.1.3.6.1.4.1.232.165.1.2.3.0';
 		$oid_mapping_table['HpeUpsMgmtHW'] = '.1.3.6.1.4.1.232.165.1.2.4.0';
 		$oid_mapping_table['HpeUpsMgmgPartNr'] = '.1.3.6.1.4.1.232.165.1.2.5.0';
@@ -147,13 +149,6 @@
 
 			SetValue($this->GetIdForIdent($varIdent), $newValue);
 		}
-	}
-
-	protected function SnmpGet($oid) {
-	
-		$result = IPSSNMP_ReadSNMP($this->ReadPropertyInteger("SnmpInstance"), Array($oid));
-
-		return $result[$oid];
 	}
 	
 	protected function SnmpBulkGet($oids) {
