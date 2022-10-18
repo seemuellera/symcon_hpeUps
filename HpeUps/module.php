@@ -134,7 +134,7 @@
 
 		foreach ($allResults as $resultOid => $resultValue) {
 			
-			$varIdent = $identLookupTable[$resultOid];
+			$varIdent = $identLookupTable['.' . $resultOid];
 			$this->LogMessage("INFO - found ident : $varident ", KL_ERROR);
 			
 			if ( ($varIdent == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
