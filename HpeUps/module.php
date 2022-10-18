@@ -116,33 +116,10 @@
 		$oid_mapping_table['HpeUpsOutputSource'] = '.1.3.6.1.4.1.232.165.3.4.5.0';
 		$oid_mapping_table['HpeUpsAmbientTemperature'] = '.1.3.6.1.4.1.232.165.3.6.1.0';
 		$oid_mapping_table['HpeUpsBatteryTestStatus'] = '.1.3.6.1.4.1.232.165.3.7.2.0';
-
-		/*
-		foreach (array_keys($oid_mapping_table) as $currentIdent) {
-		
-			$this->UpdateVariable($currentIdent, $oid_mapping_table[$currentIdent]);
-		}
-		*/
 		
 		$this->BulkUpdateVariables($oid_mapping_table);
 	}
 
-	protected function UpdateVariable($varIdent, $oid) {
-	
-		$oldValue = GetValue($this->GetIDForIdent($varIdent));
-		$newValue = $this->SnmpGet($oid);
-
-		if ( ($varIdent == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
-		
-			$newValue = $newValue / 10;
-		}
-
-		if ($newValue != $oldValue) {
-
-			SetValue($this->GetIdForIdent($varIdent), $newValue);
-		}
-	}
-	
 	protected function BulkUpdateVariables($mappingTable) {
 	
 		$allResults = $this->SnmpBulkGet($mappingTable);
