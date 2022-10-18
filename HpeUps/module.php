@@ -132,10 +132,12 @@
 		
 		$identLookupTable = array_flip ($mappingTable);
 
+		print_r($identLookupTable);
+		print_r($allResults);
+
 		foreach ($allResults as $resultOid => $resultValue) {
 			
-			$varIdent = $identLookupTable['.' . $resultOid];
-			$this->LogMessage("INFO - found ident : $varident ", KL_ERROR);
+			$varIdent = $identLookupTable[$resultOid];
 			
 			if ( ($varIdent == "HpeUpsInputFrequency") || ($varIdent == "HpeUpsOutputFrequency") ){
 			
