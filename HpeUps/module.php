@@ -126,6 +126,7 @@
 		
 		if (! $allResults) {
 			
+			$this->LogMessage("ERROR - Unable to fetch data via SNMP", KL_ERROR);
 			return false;
 		}
 		
